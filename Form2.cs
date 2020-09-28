@@ -384,32 +384,40 @@ namespace WindowsFormsApp2
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             Font fntTxt = new Font("宋体", 5, System.Drawing.FontStyle.Regular);//正文文字                  
-            System.Drawing.Brush brush = new SolidBrush(System.Drawing.Color.Black);//画刷           
+            System.Drawing.Brush brush = new SolidBrush(System.Drawing.Color.Black);//画刷      
+            int y = 5;
             try
             {
-
-                e.Graphics.DrawString("衬砌类型：", fntTxt, brush, new System.Drawing.Point(15, 10));
-                e.Graphics.DrawString(liningTypeValue, fntTxt, brush, new System.Drawing.Point(80, 10));
-                e.Graphics.DrawString("预留变形量：", fntTxt, brush, new System.Drawing.Point(15, 30));
-                e.Graphics.DrawString(reservedDeformation, fntTxt, brush, new System.Drawing.Point(80, 30));
-                e.Graphics.DrawString("断面形式：", fntTxt, brush, new System.Drawing.Point(15, 50));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 50));
-                e.Graphics.DrawString("喷栓：", fntTxt, brush, new System.Drawing.Point(15, 70));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 70));
-                e.Graphics.DrawString("钢架形式：", fntTxt, brush, new System.Drawing.Point(15, 90));
-                e.Graphics.DrawString(sf, fntTxt, brush, new System.Drawing.Point(80, 90));
-                e.Graphics.DrawString("钢架锁脚：", fntTxt, brush, new System.Drawing.Point(15, 110));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 110));
-                e.Graphics.DrawString("锚杆形式：", fntTxt, brush, new System.Drawing.Point(15, 130));
-                e.Graphics.DrawString(aap + "、" + aal, fntTxt, brush, new System.Drawing.Point(80, 130));
-                e.Graphics.DrawString("钢筋网：", fntTxt, brush, new System.Drawing.Point(15, 150));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 150));
-                e.Graphics.DrawString("二次衬砌：", fntTxt, brush, new System.Drawing.Point(15, 170));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 170));
-                e.Graphics.DrawString("超前支护措施：", fntTxt, brush, new System.Drawing.Point(15, 190));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 190));
-                e.Graphics.DrawString("施工工法：", fntTxt, brush, new System.Drawing.Point(15, 210));
-                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, 210));
+                if (liningTypeValue != null && liningTypeValue != "")
+                {
+                    e.Graphics.DrawString("衬砌类型：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                    e.Graphics.DrawString(liningTypeValue, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (reservedDeformation != null && reservedDeformation != "")
+                {
+                    e.Graphics.DrawString("预留变形量：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                    e.Graphics.DrawString(reservedDeformation, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                
+                
+                e.Graphics.DrawString("断面形式：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("喷栓：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("钢架形式：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(sf, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("钢架锁脚：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("锚杆形式：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(aap + "、" + aal, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("钢筋网：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("二次衬砌：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("超前支护措施：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                e.Graphics.DrawString("施工工法：", fntTxt, brush, new System.Drawing.Point(15, y += 5));
+                e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
 
             }
             catch (Exception ee)
