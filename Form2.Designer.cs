@@ -66,7 +66,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.largeDeformation = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
@@ -437,7 +437,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.comboBox9);
+            this.tabPage1.Controls.Add(this.largeDeformation);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
@@ -447,17 +447,13 @@
             this.tabPage1.Text = "大变形";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // comboBox9
+            // largeDeformation
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "一级（轻微）",
-            "二级（中等）",
-            "三级（严重）"});
-            this.comboBox9.Location = new System.Drawing.Point(126, 100);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(143, 23);
-            this.comboBox9.TabIndex = 2;
+            this.largeDeformation.FormattingEnabled = true;
+            this.largeDeformation.Location = new System.Drawing.Point(126, 100);
+            this.largeDeformation.Name = "largeDeformation";
+            this.largeDeformation.Size = new System.Drawing.Size(143, 23);
+            this.largeDeformation.TabIndex = 2;
             // 
             // label14
             // 
@@ -673,7 +669,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox comboBox9;
+        private System.Windows.Forms.ComboBox largeDeformation;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox3;

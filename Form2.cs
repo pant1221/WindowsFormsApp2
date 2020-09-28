@@ -175,6 +175,15 @@ namespace WindowsFormsApp2
                 ia = dr[1].ToString();
                 floor = dr[2].ToString();
             }
+            /**
+            string sql4 = "select arch_wall, inverted_arch, floor from thickness_of_secondary_lining where id = '" + secondaryLiningId + "'";
+            dr = dao.read(sql3);
+            while (dr.Read())
+            {
+                aw = dr[0].ToString();
+                ia = dr[1].ToString();
+                floor = dr[2].ToString();
+            }**/
 
             printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Custom", 210, 279);
             printPreviewControl1.Document = printDocument1;
@@ -327,6 +336,33 @@ namespace WindowsFormsApp2
             singleDoubleLine.DataSource = dt;
             singleDoubleLine.DisplayMember = "val";//val这个字段为显示的值
             singleDoubleLine.ValueMember = "id";//id这个字段为后台获取的值
+
+            dt = new DataTable();//创建一个数据集
+            dt.Columns.Add("id", typeof(String));
+            dt.Columns.Add("val", typeof(String));
+            dr = dt.NewRow();
+            dr[0] = null;
+            dr[1] = null;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "1";
+            dr[1] = " 一级（轻微）";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "2";
+            dr[1] = "二级（中等）";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "3";
+            dr[1] = "三级（严重）";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "4";
+            dr[1] = "四级（极严重）";
+            dt.Rows.Add(dr);
+            largeDeformation.DataSource = dt;
+            largeDeformation.DisplayMember = "val";//val这个字段为显示的值
+            largeDeformation.ValueMember = "id";//id这个字段为后台获取的值
 
         }
 
