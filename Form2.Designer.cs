@@ -58,32 +58,51 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.choseImages = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.averageTemperature = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.largeDeformation = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.rockburst = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.buildBuuton = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.choseImages = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -91,7 +110,6 @@
             this.tabPage2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -365,6 +383,25 @@
             this.groupBox2.Text = "基本信息";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // choseImages
+            // 
+            this.choseImages.Location = new System.Drawing.Point(41, 185);
+            this.choseImages.Name = "choseImages";
+            this.choseImages.Size = new System.Drawing.Size(157, 34);
+            this.choseImages.TabIndex = 12;
+            this.choseImages.Text = "选择图片";
+            this.choseImages.UseVisualStyleBackColor = true;
+            this.choseImages.Click += new System.EventHandler(this.choseImages_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(41, 24);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(157, 144);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -381,7 +418,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.textBox5);
+            this.tabPage4.Controls.Add(this.comboBox1);
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Location = new System.Drawing.Point(4, 39);
             this.tabPage4.Name = "tabPage4";
@@ -390,13 +427,6 @@
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "高地热";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(107, 82);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(169, 25);
-            this.textBox5.TabIndex = 23;
             // 
             // label17
             // 
@@ -409,7 +439,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.label34);
+            this.tabPage3.Controls.Add(this.averageTemperature);
             this.tabPage3.Controls.Add(this.label16);
             this.tabPage3.Location = new System.Drawing.Point(4, 39);
             this.tabPage3.Name = "tabPage3";
@@ -419,24 +450,46 @@
             this.tabPage3.Text = "抗冻";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // label34
             // 
-            this.textBox4.Location = new System.Drawing.Point(92, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(169, 25);
-            this.textBox4.TabIndex = 7;
+            this.label34.AutoEllipsis = true;
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(291, 70);
+            this.label34.MaximumSize = new System.Drawing.Size(143, 500);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(142, 60);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "洞内设保温检查井，洞外水沟同样按保温水沟设置，并采用保温出水口";
+            // 
+            // averageTemperature
+            // 
+            this.averageTemperature.FormattingEnabled = true;
+            this.averageTemperature.Location = new System.Drawing.Point(42, 96);
+            this.averageTemperature.Name = "averageTemperature";
+            this.averageTemperature.Size = new System.Drawing.Size(143, 23);
+            this.averageTemperature.TabIndex = 5;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(49, 80);
+            this.label16.Location = new System.Drawing.Point(39, 60);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 15);
+            this.label16.Size = new System.Drawing.Size(127, 15);
             this.label16.TabIndex = 4;
-            this.label16.Text = "抗冻";
+            this.label16.Text = "最冷月平均气温：";
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label28);
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.label26);
+            this.tabPage1.Controls.Add(this.label25);
+            this.tabPage1.Controls.Add(this.label24);
+            this.tabPage1.Controls.Add(this.label23);
+            this.tabPage1.Controls.Add(this.label22);
+            this.tabPage1.Controls.Add(this.label21);
+            this.tabPage1.Controls.Add(this.label20);
+            this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.largeDeformation);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
@@ -447,10 +500,100 @@
             this.tabPage1.Text = "大变形";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(222, 140);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 15);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "四级";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(222, 114);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(37, 15);
+            this.label27.TabIndex = 11;
+            this.label27.Text = "三级";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(222, 87);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(37, 15);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "二级";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(222, 57);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(37, 15);
+            this.label25.TabIndex = 9;
+            this.label25.Text = "一级";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(309, 140);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(125, 15);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "Rcm/σmax≤0.10";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(289, 114);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(172, 15);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "0.15≥Rcm/σmax＞0.10";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(289, 87);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(172, 15);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "0.20≥Rcm/σmax＞0.15";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(289, 57);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(172, 15);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "0.30≥Rcm/σmax＞0.20";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(324, 22);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(78, 15);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Rcm/σmax";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(207, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(82, 15);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "大变形分级";
+            // 
             // largeDeformation
             // 
             this.largeDeformation.FormattingEnabled = true;
-            this.largeDeformation.Location = new System.Drawing.Point(126, 100);
+            this.largeDeformation.Location = new System.Drawing.Point(26, 87);
             this.largeDeformation.Name = "largeDeformation";
             this.largeDeformation.Size = new System.Drawing.Size(143, 23);
             this.largeDeformation.TabIndex = 2;
@@ -458,15 +601,20 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(38, 103);
+            this.label14.Location = new System.Drawing.Point(23, 57);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 15);
+            this.label14.Size = new System.Drawing.Size(90, 15);
             this.label14.TabIndex = 1;
-            this.label14.Text = "大变形等级";
+            this.label14.Text = "大变形等级:";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox11);
+            this.tabPage2.Controls.Add(this.label33);
+            this.tabPage2.Controls.Add(this.label32);
+            this.tabPage2.Controls.Add(this.label31);
+            this.tabPage2.Controls.Add(this.label30);
+            this.tabPage2.Controls.Add(this.label29);
+            this.tabPage2.Controls.Add(this.rockburst);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Location = new System.Drawing.Point(4, 39);
             this.tabPage2.Name = "tabPage2";
@@ -476,32 +624,72 @@
             this.tabPage2.Text = "岩爆";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox11
+            // label33
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Items.AddRange(new object[] {
-            "Ⅰ级（轻微）",
-            "Ⅱ级（中等）",
-            "Ⅲ级（强烈）",
-            "Ⅳ级（极强）"});
-            this.comboBox11.Location = new System.Drawing.Point(135, 91);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(143, 23);
-            this.comboBox11.TabIndex = 4;
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(358, 28);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(67, 15);
+            this.label33.TabIndex = 9;
+            this.label33.Text = "岩爆分级";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(349, 56);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(97, 15);
+            this.label32.TabIndex = 8;
+            this.label32.Text = "Ⅰ级（轻微）";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(349, 108);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(97, 15);
+            this.label31.TabIndex = 7;
+            this.label31.Text = "Ⅲ级（强烈）";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(349, 136);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(97, 15);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Ⅳ级（极强）";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(349, 83);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(97, 15);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "Ⅱ级（中等）";
+            // 
+            // rockburst
+            // 
+            this.rockburst.FormattingEnabled = true;
+            this.rockburst.Location = new System.Drawing.Point(117, 56);
+            this.rockburst.Name = "rockburst";
+            this.rockburst.Size = new System.Drawing.Size(143, 23);
+            this.rockburst.TabIndex = 4;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(47, 94);
+            this.label15.Location = new System.Drawing.Point(34, 59);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(67, 15);
+            this.label15.Size = new System.Drawing.Size(75, 15);
             this.label15.TabIndex = 3;
-            this.label15.Text = "岩爆等级";
+            this.label15.Text = "岩爆等级:";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.textBox6);
+            this.tabPage5.Controls.Add(this.comboBox2);
             this.tabPage5.Controls.Add(this.label18);
             this.tabPage5.Location = new System.Drawing.Point(4, 39);
             this.tabPage5.Name = "tabPage5";
@@ -510,13 +698,6 @@
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "瓦斯";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(107, 91);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(169, 25);
-            this.textBox6.TabIndex = 26;
             // 
             // label18
             // 
@@ -556,7 +737,7 @@
             // 
             // buildBuuton
             // 
-            this.buildBuuton.Location = new System.Drawing.Point(594, 240);
+            this.buildBuuton.Location = new System.Drawing.Point(594, 246);
             this.buildBuuton.Name = "buildBuuton";
             this.buildBuuton.Size = new System.Drawing.Size(75, 55);
             this.buildBuuton.TabIndex = 30;
@@ -568,46 +749,47 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(41, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(157, 144);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk_1);
             // 
-            // choseImages
+            // button2
             // 
-            this.choseImages.Location = new System.Drawing.Point(41, 185);
-            this.choseImages.Name = "choseImages";
-            this.choseImages.Size = new System.Drawing.Size(157, 34);
-            this.choseImages.TabIndex = 12;
-            this.choseImages.Text = "选择图片";
-            this.choseImages.UseVisualStyleBackColor = true;
-            this.choseImages.Click += new System.EventHandler(this.choseImages_Click);
+            this.button2.Location = new System.Drawing.Point(594, 336);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 61);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "打印";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // printDialog1
             // 
-            this.button1.Location = new System.Drawing.Point(594, 331);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 61);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "下载";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(117, 82);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 23;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(126, 91);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 23);
+            this.comboBox2.TabIndex = 26;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1261, 768);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.buildBuuton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -618,6 +800,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -631,7 +814,6 @@
             this.tabPage5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -677,19 +859,37 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.ComboBox comboBox11;
+        private System.Windows.Forms.ComboBox rockburst;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button choseImages;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox averageTemperature;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

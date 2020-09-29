@@ -29,5 +29,21 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            this.Visible = false;
+            form3.ShowDialog();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            this.Visible = false;
+            form2.ShowDialog();
+            this.Close();
+        }
     }
 }
