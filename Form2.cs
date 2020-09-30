@@ -15,9 +15,21 @@ namespace WindowsFormsApp2
 {
     public partial class Form2 : Form
     {
-        string liningTypeValue, reservedDeformation, initialSupportid, strengthenSupportId, secondaryLiningId, scopeOfApplication, liningTypeCode, anchorArm;
+        string liningTypeValue, reservedDeformation, initialSupportid, strengthenSupportId, secondaryLiningId, scopeOfApplication, liningTypeCode, anchorArm, remark;
         string shotcreteThicknessArchWall, shotcreteThicknessInvertedArch, anchorArmPosition, anchorArmLength, aarls, steelFrame, archWall, invertedArch, floor, constructionMethod, advanceSupportMeasures, workingFaceReinforce;
         string sectionForm, shotcrete, steelFrameForm, steelFrameLockFoot, anchorArmForm, steelMesh, secondaryLining, bufferEnergyAbsorbingLayer, groutingReinforcement;
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        string rbShotcrete, rbSteelMesh, rbAnchorArm, rbSteelFrame, caveEntranceTypeValue1, caveEntranceTypeValue2, designRequirement, liningSupports;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -34,7 +46,7 @@ namespace WindowsFormsApp2
             MessageBox.Show("页面为空");
         }
 
-        string fortificationLength, structuralRequirements, supportingMeasures, keepWarmDrainage;
+        string fortificationLength1, fortificationLength2, structuralRequirements, supportingMeasures, keepWarmDrainage;
 
         private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
@@ -191,7 +203,7 @@ namespace WindowsFormsApp2
             }
 
             string sql4 = "select arch_wall, inverted_arch, floor from thickness_of_secondary_lining where id = '" + secondaryLiningId + "'";
-            dr = dao.read(sql3);
+            dr = dao.read(sql4);
             while (dr.Read())
             {
                 archWall = dr[0].ToString();
@@ -203,7 +215,7 @@ namespace WindowsFormsApp2
                 string sql5 = " where single_double_line_code = '" + singleDoubleLine.SelectedValue.ToString() + "' and surrounding_rock_level_code = '" + surroundingRockLevel.SelectedValue.ToString() + "' and lining_type_code = '" + liningTypeCode + "'";
                 if (mechanizedSupporting.SelectedValue.ToString() == "1")
                 {
-                    sql5 = "select construction_method,advance_support_measures from drilling_blasting_basic_mechanization" + sql5;
+                    sql5 = "select construction_method, advance_support_measures from drilling_blasting_basic_mechanization" + sql5;
                     dr = dao.read(sql5);
                     while (dr.Read())
                     {
@@ -214,13 +226,14 @@ namespace WindowsFormsApp2
                 }
                 else
                 {
-                    sql5 = "select construction_method, advance_support_measures, working_face_reinforce from drilling_blasting_large_mechanization" + sql5;
+                    sql5 = "select construction_method, advance_support_measures, working_face_reinforce, remark from drilling_blasting_large_mechanization" + sql5;
                     dr = dao.read(sql5);
                     while (dr.Read())
                     {
                         constructionMethod = dr[0].ToString();
                         advanceSupportMeasures = dr[1].ToString();
                         workingFaceReinforce = dr[2].ToString();
+                        remark = dr[3].ToString();
                     }
                 }
 
@@ -285,27 +298,59 @@ namespace WindowsFormsApp2
                 dr = dao.read(sql7);
                 while (dr.Read())
                 {
-                    shotcrete = dr[0].ToString();
-                    steelMesh = dr[1].ToString();
-                    anchorArm = dr[2].ToString();
-                    steelFrame = dr[3].ToString();
+                    rbShotcrete = dr[0].ToString();
+                    rbSteelMesh = dr[1].ToString();
+                    rbAnchorArm = dr[2].ToString();
+                    rbSteelFrame = dr[3].ToString();
+                    
 
                 }
             }
             if (averageTemperature.SelectedValue.ToString() != null && averageTemperature.SelectedValue.ToString() != "")
             {
-                string sql8 = "select fortification_length, structural_requirements, supporting_measures, keep_warm_drainage from frost_resistance_of_tunnel where average_temperature_code = '" + averageTemperature.SelectedValue.ToString() + "'";
+                string sql8 = "select fortification_length, structural_requirements, supporting_measures, keep_warm_drainage, cave_entrance_type_value from frost_resistance_of_tunnel where average_temperature_code = " + averageTemperature.SelectedValue.ToString() + " and cave_entrance_type_code = '1'";
                 dr = dao.read(sql8);
                 while (dr.Read())
                 {
-                    fortificationLength = dr[0].ToString();
+                    fortificationLength1 = dr[0].ToString();
                     structuralRequirements = dr[1].ToString();
                     supportingMeasures = dr[2].ToString();
                     keepWarmDrainage = dr[3].ToString();
+                    caveEntranceTypeValue1 = dr[4].ToString();
+
+                }
+                string sql81 = "select fortification_length, structural_requirements, supporting_measures, keep_warm_drainage, cave_entrance_type_value from frost_resistance_of_tunnel where average_temperature_code = " + averageTemperature.SelectedValue.ToString() + " and cave_entrance_type_code = '2'";
+                dr = dao.read(sql81);
+                while (dr.Read())
+                {
+                    fortificationLength2 = dr[0].ToString();
+                    structuralRequirements = dr[1].ToString();
+                    supportingMeasures = dr[2].ToString();
+                    keepWarmDrainage = dr[3].ToString();
+                    caveEntranceTypeValue2 = dr[4].ToString();
 
                 }
             }
+            if (gas.SelectedValue.ToString() != null && gas.SelectedValue.ToString() != "")
+            {
+                string sql9 = "select design_requirement from gas_treatment_scheme where id = '" + gas.SelectedValue.ToString() + "'";
+                dr = dao.read(sql9);
+                while (dr.Read())
+                {
+                    designRequirement = dr[0].ToString();
 
+                }
+            }
+            if (highEothermal.SelectedValue.ToString() != null && highEothermal.SelectedValue.ToString() != "")
+            {
+                string sql10 = "select lining_supports from high_eothermal_programme where id = '" + highEothermal.SelectedValue.ToString() + "'";
+                dr = dao.read(sql10);
+                while (dr.Read())
+                {
+                    liningSupports = dr[0].ToString();
+
+                }
+            }
             /**
             string sql5 = "select arch_wall, inverted_arch, floor from thickness_of_secondary_lining where id = '" + secondaryLiningId + "'";
             dr = dao.read(sql3);
@@ -540,6 +585,64 @@ namespace WindowsFormsApp2
             averageTemperature.DisplayMember = "val";//val这个字段为显示的值
             averageTemperature.ValueMember = "id";//id这个字段为后台获取的值
 
+            dt = new DataTable();//创建一个数据集
+            dt.Columns.Add("id", typeof(String));
+            dt.Columns.Add("val", typeof(String));
+            dr = dt.NewRow();
+            dr[0] = null;
+            dr[1] = null;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "2";
+            dr[1] = "活动断裂、深大断裂、构造交叉带、褶皱密集带、节理密集带";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "3";
+            dr[1] = "高瓦斯或瓦斯突出区段距洞口大于2000m时";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "4";
+            dr[1] = "高瓦斯或瓦斯突出区段距洞口2000m及以下，且海拔大于3000m时";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "5";
+            dr[1] = "高瓦斯工区和瓦斯突出工区";
+            dt.Rows.Add(dr);
+            gas.DataSource = dt;
+            gas.DisplayMember = "val";//val这个字段为显示的值
+            gas.ValueMember = "id";//id这个字段为后台获取的值
+            
+            dt = new DataTable();//创建一个数据集
+            dt.Columns.Add("id", typeof(String));
+            dt.Columns.Add("val", typeof(String));
+            dr = dt.NewRow();
+            dr[0] = null;
+            dr[1] = null;
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "1";
+            dr[1] = "28～37℃";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "2";
+            dr[1] = "37～50℃";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "3";
+            dr[1] = "50～60℃";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "4";
+            dr[1] = ">60℃（岩温）";
+            dt.Rows.Add(dr);
+            dr = dt.NewRow();
+            dr[0] = "5";
+            dr[1] = ">45℃（水温）";
+            dt.Rows.Add(dr);
+            highEothermal.DataSource = dt;
+            highEothermal.DisplayMember = "val";//val这个字段为显示的值
+            highEothermal.ValueMember = "id";//id这个字段为后台获取的值
+
 
         }
 
@@ -575,52 +678,156 @@ namespace WindowsFormsApp2
                     e.Graphics.DrawString("预留变形量：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
                     e.Graphics.DrawString(reservedDeformation, fntTxt, brush, new System.Drawing.Point(80, y));
                 }
-                if (initialSupportid != null && initialSupportid != "")
+                if (sectionForm != null && sectionForm != "")
                 {
                     e.Graphics.DrawString("断面形式：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString(sectionForm, fntTxt, brush, new System.Drawing.Point(80, y));
                 }
-                if (reservedDeformation != null && reservedDeformation != "")
+                
+                if (shotcreteThicknessArchWall != null && shotcreteThicknessArchWall != "")
                 {
-                    e.Graphics.DrawString("喷栓：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
-                }
-                if (steelFrame != null && steelFrame != "")
-                {
-                    e.Graphics.DrawString("钢架形式：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(steelFrame, fntTxt, brush, new System.Drawing.Point(80, y));
-                }
-                if (reservedDeformation != null && reservedDeformation != "")
-                {
-                    e.Graphics.DrawString("钢架锁脚：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    if (shotcrete != null && shotcrete != "")
+                    {
+                        e.Graphics.DrawString("喷砼（cm）：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(shotcrete, fntTxt, brush, new System.Drawing.Point(80, y));
+                    } else
+                    {
+                        e.Graphics.DrawString("喷砼（cm）：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(shotcreteThicknessArchWall + "  " + shotcreteThicknessInvertedArch, fntTxt, brush, new System.Drawing.Point(80, y));
+                    }
+                    
                 }
                 if (anchorArmPosition != null && anchorArmPosition != "")
                 {
-                    e.Graphics.DrawString("锚杆形式：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(anchorArmPosition + "、" + anchorArmLength, fntTxt, brush, new System.Drawing.Point(80, y));
+                    if (anchorArmForm != null && anchorArmForm != "")
+                    {
+                        e.Graphics.DrawString("锚杆形式：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(anchorArmForm, fntTxt, brush, new System.Drawing.Point(80, y));
+                    } else
+                    {
+                        e.Graphics.DrawString("锚杆：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(anchorArmPosition + "  " + anchorArmLength + "  " + aarls, fntTxt, brush, new System.Drawing.Point(80, y));
+                    }
+                    
                 }
-                if (reservedDeformation != null && reservedDeformation != "")
+                if (steelMesh != null && steelMesh != "")
                 {
-                    e.Graphics.DrawString("钢筋网：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString("钢筋网（cm）：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(steelMesh, fntTxt, brush, new System.Drawing.Point(80, y));
                 }
-                if (reservedDeformation != null && reservedDeformation != "")
+                if (steelFrame != null && steelFrame != "")
                 {
-                    e.Graphics.DrawString("二次衬砌：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    if (steelFrameForm != null && steelFrameForm != "")
+                    {
+                        e.Graphics.DrawString("钢架形式：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(steelFrameForm, fntTxt, brush, new System.Drawing.Point(80, y));
+                        e.Graphics.DrawString("钢架锁脚：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(steelFrameLockFoot, fntTxt, brush, new System.Drawing.Point(80, y));
+                    } else
+                    {
+                        e.Graphics.DrawString("钢架：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(steelFrame, fntTxt, brush, new System.Drawing.Point(80, y));
+                    }
+
+                    
                 }
-                if (reservedDeformation != null && reservedDeformation != "")
+                if (archWall != null && archWall != "")
+                {
+                    if (secondaryLining != null && secondaryLining != "") 
+                    {
+                        e.Graphics.DrawString("二次衬砌：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(secondaryLining, fntTxt, brush, new System.Drawing.Point(80, y));
+                    } else
+                    {
+                        e.Graphics.DrawString("二次衬砌厚度(cm)：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                        e.Graphics.DrawString(archWall + "  " + invertedArch + "  " + floor, fntTxt, brush, new System.Drawing.Point(80, y));
+                    }
+                    
+                }
+                if (bufferEnergyAbsorbingLayer != null && bufferEnergyAbsorbingLayer != "")
+                {
+                    e.Graphics.DrawString("缓冲吸能层：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(bufferEnergyAbsorbingLayer, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (groutingReinforcement != null && groutingReinforcement != "")
+                {
+                    e.Graphics.DrawString("注浆加固：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(groutingReinforcement, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (scopeOfApplication != null && scopeOfApplication != "")
+                {
+                    e.Graphics.DrawString("适用范围：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(scopeOfApplication, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (constructionMethod != null && constructionMethod != "")
+                {
+                    e.Graphics.DrawString("工法：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(constructionMethod, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (advanceSupportMeasures != null && advanceSupportMeasures != "")
                 {
                     e.Graphics.DrawString("超前支护措施：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString(advanceSupportMeasures, fntTxt, brush, new System.Drawing.Point(80, y));
                 }
-                if (reservedDeformation != null && reservedDeformation != "")
+                if (workingFaceReinforce != null && workingFaceReinforce != "")
                 {
-                    e.Graphics.DrawString("施工工法：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
-                    e.Graphics.DrawString(initialSupportid, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString("掌子面加固：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(workingFaceReinforce, fntTxt, brush, new System.Drawing.Point(80, y));
                 }
+                if (remark != null && remark != "")
+                {
+                    e.Graphics.DrawString("备注：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(remark, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                
+                if (rockburst.SelectedValue.ToString() != null && rockburst.SelectedValue.ToString() != "")
+                {
+                    e.Graphics.DrawString("岩爆处理：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                }
+                if (rbShotcrete != null && rbShotcrete != "")
+                {
+                    e.Graphics.DrawString("喷砼（cm）：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(rbShotcrete, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (rbSteelMesh != null && rbSteelMesh != "")
+                {
+                    e.Graphics.DrawString("钢筋网：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(rbSteelMesh, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (rbAnchorArm != null && rbAnchorArm != "")
+                {
+                    e.Graphics.DrawString("锚杆：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(rbAnchorArm, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (rbSteelFrame != null && rbSteelFrame != "")
+                {
+                    e.Graphics.DrawString("钢架：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(rbSteelFrame, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (averageTemperature.SelectedValue.ToString() != null && averageTemperature.SelectedValue.ToString() != "")
+                {
+                    e.Graphics.DrawString("抗冻处理：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString("类型&长度：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(caveEntranceTypeValue1 + "  " + fortificationLength1, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString(caveEntranceTypeValue2 + "  " + fortificationLength2, fntTxt, brush, new System.Drawing.Point(80, y += 9));
+                    e.Graphics.DrawString("结构要求：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(structuralRequirements, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString("辅助措施：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(supportingMeasures, fntTxt, brush, new System.Drawing.Point(80, y));
+                    e.Graphics.DrawString("保温防排水：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(keepWarmDrainage, fntTxt, brush, new System.Drawing.Point(80, y));
 
+                }
+                if (designRequirement != null && designRequirement != "")
+                {
+                    e.Graphics.DrawString("瓦斯，设计要求：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(designRequirement, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
+                if (liningSupports != null && liningSupports != "")
+                {
+                    e.Graphics.DrawString("高地热衬砌支护：", fntTxt, brush, new System.Drawing.Point(15, y += 9));
+                    e.Graphics.DrawString(liningSupports, fntTxt, brush, new System.Drawing.Point(80, y));
+                }
 
             }
             catch (Exception ee)

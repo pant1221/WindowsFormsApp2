@@ -11,7 +11,7 @@ namespace WindowsFormsApp2
     {
         public OleDbConnection connect()
         {
-            string str = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\\工作文件\\vs2019WorkSpace\\WindowsFormsApp2\\test.accdb";
+            string str = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=test.accdb";
             OleDbConnection conn = new OleDbConnection(str);
             conn.Open();
             return conn;
